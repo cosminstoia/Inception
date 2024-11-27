@@ -1,6 +1,7 @@
 FROM debian:bullseye
 
-RUN apt update && apt-get install nginx -y
+RUN apt update && apt-get install -y \
+    nginx
 
 COPY requirements/nginx/default /etc/nginx/sites-available
 

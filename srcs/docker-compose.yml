@@ -13,3 +13,7 @@ services:
     container_name: wordpress
     volumes:
       - ./web:/var/www/html
+  mariadb:
+    build: 
+      dockerfile: requirements/mariadb/Dockerfile
+    container_name: mariadb
