@@ -1,19 +1,37 @@
+networks:
+  default:
+    driver: bridge
 services:
   nginx:
     build:
       dockerfile: requirements/nginx/Dockerfile
     container_name: nginx
+    image: nginx:42
     ports:
       - "80:80"
     volumes:
       - ./web:/var/www/html
+    networks:
+      - default
+    env_file:
+      - .env
   wordpress:
     build:
       dockerfile: requirements/wordpress/Dockerfile
     container_name: wordpress
+    image: wordpress:42
     volumes:
       - ./web:/var/www/html
+    networks:
+      - default
+    env_file:
+      - .env
   mariadb:
     build: 
       dockerfile: requirements/mariadb/Dockerfile
     container_name: mariadb
+    image: mariadb:42
+    networks:
+      - default
+    env_file:
+      - .env

@@ -7,7 +7,7 @@ all: up
 
 # Start and build containers
 up:
-	$(DC) -f $(FILE) up
+	$(DC) -f $(FILE) up -d
 
 # Stop containers
 down:
@@ -17,6 +17,7 @@ down:
 clean:
 	$(DC) -f $(FILE) down -v
 
+# Delete all the images, containers and the web directory
 prune:
 	docker system prune -af
 	rm -rf ./srcs/web
