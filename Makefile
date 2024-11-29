@@ -7,7 +7,7 @@ all: up
 
 # Start and build containers
 up:
-	$(DC) -f $(FILE) up -d
+	$(DC) -f $(FILE) up
 
 # Stop containers
 down:

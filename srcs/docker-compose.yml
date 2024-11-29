@@ -26,6 +26,10 @@ services:
       - default
     env_file:
       - .env
+    secrets:
+      - db_user
+      - db_pass
+
   mariadb:
     build: 
       dockerfile: requirements/mariadb/Dockerfile
@@ -35,3 +39,19 @@ services:
       - default
     env_file:
       - .env
+    secrets:
+      - db_root_pass
+      - db_user
+      - db_pass
+
+secrets:
+  db_user:
+    file: ../secrets/db_user.txt
+  db_pass:
+    file: ../secrets/db_pass.txt
+  db_root_pass:
+    file: ../secrets/db_root_pass.txt
+  wp_admin:
+    file: ../secrets/wp_admin.txt
+  wp_user_pass:
+    file: ../secrets/wp_user_pass.txt
