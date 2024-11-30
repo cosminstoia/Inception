@@ -20,7 +20,7 @@ clean:
 # Delete all the images, containers and the web directory
 prune:
 	docker system prune -af
-	rm -rf ./srcs/web
+	rm -rf ./srcs/data
 
 # Show running containers
 ps:
