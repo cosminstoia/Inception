@@ -2,6 +2,7 @@ version: "3.3"
 networks:
   default:
     driver: bridge
+
 services:
   nginx:
     build:
@@ -11,8 +12,6 @@ services:
     image: nginx:42
     ports:
       - "443:443"
-    volumes:
-      - shared_data:/var/www/html
     networks:
       - default
     env_file:
@@ -24,7 +23,7 @@ services:
     container_name: wordpress
     image: wordpress:42
     volumes:
-      - shared_data:/var/www/html
+      - /home/cstoia/data/wordpress:/var/www/html
     networks:
       - default
     env_file:
@@ -39,7 +38,6 @@ services:
       - wp_user_password
       - wp_user_email
       - wp_user_role
-
   mariadb:
     build: 
       context: .
@@ -47,7 +45,7 @@ services:
     container_name: mariadb
     image: mariadb:42
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - /home/cstoia/data/mariadb:/var/lib/mysql
     networks:
       - default
     env_file:
@@ -81,16 +79,4 @@ secrets:
   
 volumes:
   wordpress:
-    name: wordpress
-    driver: local
-    driver_opts:
-    device: /home/cstoia/data/wordpress
-    o: bind
-    type: bind
   mariadb:
-    name: mariadb
-    driver: local
-    driver_opts:
-    device: /home/cstoia/data/mariadb
-    o: bind
-    type: bind
