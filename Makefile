@@ -1,5 +1,5 @@
 # Variables
-DC = docker compose
+DC = docker-compose
 FILE = ./srcs/docker-compose.yml
 
 # Default target
