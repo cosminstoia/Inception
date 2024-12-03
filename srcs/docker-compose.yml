@@ -1,9 +1,11 @@
+version: "3.3"
 networks:
   default:
     driver: bridge
 services:
   nginx:
     build:
+      context: .
       dockerfile: requirements/nginx/Dockerfile
     container_name: nginx
     image: nginx:42
@@ -17,6 +19,7 @@ services:
       - .env
   wordpress:
     build:
+      context: .
       dockerfile: requirements/wordpress/Dockerfile
     container_name: wordpress
     image: wordpress:42
@@ -39,6 +42,7 @@ services:
 
   mariadb:
     build: 
+      context: .
       dockerfile: requirements/mariadb/Dockerfile
     container_name: mariadb
     image: mariadb:42

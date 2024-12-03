@@ -48,8 +48,8 @@ wp config create \
 # Install WordPress
 echo "Installing WordPress..."
 wp core install \
-    --url="${WP_URL:-127.0.0.1}" \
-    --title="INCEPTION" \
+    --url="$DOMAIN_NAME" \
+    --title="$TITLE" \
     --admin_user="$WP_ADMIN_USER" \
     --admin_password="$WP_ADMIN_PASSWORD" \
     --admin_email="$WP_ADMIN_EMAIL" \
