@@ -12,7 +12,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - ./data:/var/www/html
+      - shared_data:/var/www/html
     networks:
       - default
     env_file:
@@ -24,7 +24,7 @@ services:
     container_name: wordpress
     image: wordpress:42
     volumes:
-      - ./data:/var/www/html
+      - shared_data:/var/www/html
     networks:
       - default
     env_file:
@@ -46,6 +46,8 @@ services:
       dockerfile: requirements/mariadb/Dockerfile
     container_name: mariadb
     image: mariadb:42
+    volumes:
+      - mariadb:/var/lib/mysql
     networks:
       - default
     env_file:
@@ -77,3 +79,6 @@ secrets:
   wp_user_role:
     file: ../secrets/wp_user_role.txt
   
+volumes:
+  shared_data:
+  mariadb_data:
