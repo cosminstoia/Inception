@@ -7,5 +7,6 @@ COPY requirements/mariadb/tools/50-server.cnf /etc/mysql/mariadb.conf.d/.
 COPY requirements/mariadb/tools/init.sql /etc/mysql/init.sql
 
 RUN mkdir /run/mysqld
+RUN mkdir /home/cstoia/data/mariadb
 
 CMD ["mysqld"]

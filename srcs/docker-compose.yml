@@ -80,5 +80,17 @@ secrets:
     file: ../secrets/wp_user_role.txt
   
 volumes:
-  shared_data:
-  mariadb_data:
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+    device: /home/cstoia/data/wordpress
+    o: bind
+    type: bind
+  mariadb:
+    name: mariadb
+    driver: local
+    driver_opts:
+    device: /home/cstoia/data/mariadb
+    o: bind
+    type: bind
