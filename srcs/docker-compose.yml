@@ -47,7 +47,7 @@ services:
     container_name: mariadb
     image: mariadb:42
     volumes:
-      - data:/var/lib/mysql
+      - db:/var/lib/mysql
     networks:
       - default
     env_file:
@@ -80,15 +80,15 @@ secrets:
     file: ../secrets/wp_user_role.txt
   
 volumes:
-  data:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/cstoia/data/data
-      o: bind
   web:
     driver: local
     driver_opts:
+      device: $HOME/data/web
       type: none
-      device: /home/cstoia/data/web
+      o: bind
+  db:
+    driver: local
+    driver_opts:
+      device: $HOME/data/db
+      type: none
       o: bind
