@@ -1,6 +1,9 @@
 # Variables
 DC = docker-compose
 FILE = ./srcs/docker-compose.yml
+DATA_DIR = $(HOME)/data
+DB_DIR = $(DATA_DIR)/db
+WEB_DIR = $(DATA_DIR)/web
 
 # Default target
 all: up
@@ -25,3 +28,7 @@ prune:
 # Show running containers
 ps:
 	$(DC) ps
+
+init:
+	@mkdir -p $(DB_DIR) $(WEB_DIR)
+	@echo "Directory structure initialized: $(DATA_DIR), $(DB_DIR), $(WEB_DIR)"
